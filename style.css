@@ -1,0 +1,61 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f9ff;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(186, 230, 253, 0.85);
+  box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.14);
+}
+
+.glass-card-hover {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.28s ease;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.95);
+  box-shadow: 0 20px 38px -12px rgba(2, 132, 199, 0.22);
+}
+
+/* Animated Light Blue Ambient Blobs */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(20px, -24px, 0) scale(1.05);
+  }
+}
+
+.blob-animate {
+  animation: floatSlow 12s ease-in-out infinite;
+}
+
+.blob-animate-delay {
+  animation: floatSlow 15s ease-in-out infinite reverse;
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

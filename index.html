@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Alysa Nisfi Mauran</title>
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- File CSS Terpisah -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind CSS CDN & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- File JavaScript Terpisah -->
+  <script src="script.js"></script>
+</head>
+<body class="relative min-h-screen bg-gradient-to-br from-sky-50 via-cyan-50/70 to-sky-100 text-slate-800 selection:bg-sky-200 selection:text-sky-950">
+
+  <!-- Decorative Interactive Light Blue Background -->
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="blob-animate absolute -top-24 -left-24 h-80 w-80 sm:h-[28rem] sm:w-[28rem] rounded-full bg-sky-300/30 blur-3xl"></div>
+    <div class="blob-animate-delay absolute top-1/3 -right-28 h-80 w-80 sm:h-[30rem] sm:w-[30rem] rounded-full bg-cyan-300/30 blur-3xl"></div>
+    <div class="blob-animate absolute -bottom-28 left-1/4 h-72 w-72 sm:h-[26rem] sm:w-[26rem] rounded-full bg-sky-200/45 blur-3xl"></div>
+  </div>
+
+  <!-- =========================================================
+       STICKY NAVBAR + BILINGUAL TOGGLE (ID / EN)
+  ========================================================== -->
+  <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-lg border-b border-sky-200/80 shadow-sm shadow-sky-500/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+      <!-- Top-Left Full Name -->
+      <a href="#top" class="font-display font-extrabold text-sm sm:text-base lg:text-lg tracking-tight bg-gradient-to-r from-sky-600 to-cyan-600 bg-clip-text text-transparent hover:opacity-85 transition-opacity truncate">
+        ALYSA NISFI MAURAN
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-1 lg:gap-2">
+        <a href="#about" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-sky-600 hover:bg-sky-50 transition-colors" data-i18n="navAbout">Tentang Saya</a>
+        <a href="#projects" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-sky-600 hover:bg-sky-50 transition-colors" data-i18n="navProjects">Projek</a>
+        <a href="#skills" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-sky-600 hover:bg-sky-50 transition-colors" data-i18n="navSkills">Skill</a>
+        <a href="#certificates" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-sky-600 hover:bg-sky-50 transition-colors" data-i18n="navCertificates">Sertifikat</a>
+        <a href="#contact" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-sky-600 hover:bg-sky-50 transition-colors" data-i18n="navContact">Kontak</a>
+      </nav>
+
+      <!-- Right Actions: Bilingual Switcher (ID / EN) + Mobile Menu Button -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div role="group" aria-label="Language Switcher" class="inline-flex items-center p-1 rounded-2xl bg-sky-100/90 border border-sky-200 shadow-inner">
+          <button
+            type="button"
+            id="btn-lang-id"
+            onclick="setLanguage('id')"
+            class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 bg-sky-500 text-white shadow-sm"
+          >
+            ID
+          </button>
+          <button
+            type="button"
+            id="btn-lang-en"
+            onclick="setLanguage('en')"
+            class="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 text-sky-700 hover:text-sky-900"
+          >
+            EN
+          </button>
+        </div>
+
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          aria-label="Toggle Menu"
+          class="md:hidden p-2.5 rounded-xl bg-sky-50 border border-sky-200 text-sky-700 hover:bg-sky-100 transition-colors"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-sky-100 bg-white/95 backdrop-blur-md px-4 py-3 space-y-1">
+      <a href="#about" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600" data-i18n="navAbout">Tentang Saya</a>
+      <a href="#projects" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600" data-i18n="navProjects">Projek</a>
+      <a href="#skills" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600" data-i18n="navSkills">Skill</a>
+      <a href="#certificates" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600" data-i18n="navCertificates">Sertifikat</a>
+      <a href="#contact" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600" data-i18n="navContact">Kontak</a>
+    </div>
+  </header>
+
+  <main id="top" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-20 space-y-14 sm:space-y-20">
+
+    <!-- =======================================================
+         1. HERO SECTION (Atas Kiri: pp.jpeg | Kanannya: Selamat Datang & Nama)
+    ======================================================== -->
+    <section aria-labelledby="hero-heading" class="relative">
+      <div class="glass-card rounded-[2rem] p-6 sm:p-10 lg:p-12 overflow-hidden relative">
+        <div aria-hidden="true" class="absolute -right-12 -top-12 w-56 h-56 rounded-full bg-gradient-to-br from-sky-300/30 to-cyan-200/20 blur-2xl"></div>
+
+        <div class="flex flex-col md:flex-row items-center md:items-center gap-7 sm:gap-10 lg:gap-12 relative z-10">
+          <!-- Top-Left Profile Photo (pp.jpeg) - Clickable for Full View -->
+          <div class="shrink-0 flex flex-col items-center">
+            <button
+              type="button"
+              onclick="openLightboxById('pp')"
+              class="group relative w-40 h-40 sm:w-48 sm:h-48 lg:w-52 lg:h-52 rounded-[2rem] p-1.5 bg-gradient-to-tr from-sky-500 via-cyan-400 to-sky-300 shadow-xl shadow-sky-400/25 focus:outline-none focus:ring-4 focus:ring-sky-300 transition-transform duration-300 hover:scale-[1.03]"
+              aria-label="Lihat foto profil full"
+            >
+              <div class="relative w-full h-full rounded-[1.65rem] overflow-hidden bg-sky-100 flex items-center justify-center">
+                <img
+                  id="img-pp"
+                  src="pp.jpeg"
+                  alt="Foto Profil Alysa Nisfi Mauran"
+                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  onerror="handleImageFallback(this, 'pp.jpeg')"
+                />
+
+                <!-- Clean SVG Fallback when pp.jpeg is not yet in folder -->
+                <div class="fallback-box hidden flex-col items-center justify-center w-full h-full p-4 bg-gradient-to-br from-sky-100 to-cyan-100 text-sky-700 text-center">
+                  <svg class="w-12 h-12 text-sky-500 mb-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                  <span class="text-xs font-bold tracking-wide">pp.jpeg</span>
+                  <span class="text-[11px] text-sky-600 mt-0.5" data-i18n="clickFullHint">Klik untuk lihat full</span>
+                </div>
+
+                <!-- Hover Full-Screen Hint Overlay -->
+                <div class="absolute inset-0 bg-sky-950/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-sky-700 text-xs font-bold shadow-md">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="viewFullShort">Lihat Full</span>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <span class="mt-2.5 inline-flex items-center gap-1 text-xs font-medium text-sky-600">
+              <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+              <span data-i18n="tapPhotoHint">Klik foto untuk tampilan penuh</span>
+            </span>
+          </div>
+
+          <!-- Right Side: Welcome Greeting & Full Name -->
+          <div class="flex-1 text-center md:text-left space-y-4">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100/90 border border-sky-200 text-sky-700 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
+              <span data-i18n="heroWelcome">Selamat Datang di Portofolio Saya</span>
+            </div>
+
+            <h1 id="hero-heading" class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-slate-900 leading-tight">
+              ALYSA NISFI <span class="bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent">MAURAN</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed" data-i18n="heroSubtitle">
+              Siswi SMKN 1 Blitar • Anggota Paskibra Berprestasi (15 Sertifikat Kejuaraan) • Pengembang Aplikasi Kasir & Database
+            </p>
+
+            <!-- Quick CTA Buttons -->
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+              <a href="#certificates" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 transition-all hover:-translate-y-0.5">
+                <i data-lucide="trophy" class="w-4 h-4"></i>
+                <span data-i18n="ctaCertificates">Lihat 16 Sertifikat</span>
+              </a>
+              <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-sky-50 text-sky-700 border border-sky-200 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5">
+                <i data-lucide="folder-open" class="w-4 h-4 text-sky-500"></i>
+                <span data-i18n="ctaProjects">Lihat Projek</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         2. ABOUT ME SECTION (Siswi SMKN 1 Blitar & Paskibra)
+    ======================================================== -->
+    <section id="about" aria-labelledby="about-heading" class="scroll-mt-24 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-200 flex items-center justify-center text-sky-600">
+          <i data-lucide="user-check" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-600" data-i18n="aboutTag">Profil Singkat</span>
+          <h2 id="about-heading" class="font-display font-bold text-2xl sm:text-3xl text-slate-900" data-i18n="aboutTitle">Tentang Saya</h2>
+        </div>
+      </div>
+
+      <div class="glass-card glass-card-hover rounded-[2rem] p-6 sm:p-8 lg:p-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <p class="text-base sm:text-lg text-slate-700 leading-relaxed font-medium" data-i18n="aboutText">
+              Halo! Saya Alysa Nisfi Mauran, siswi SMKN 1 Blitar sekaligus anggota Paskibra yang aktif berkompetisi dan telah meraih 15 sertifikat kejuaraan. Saya memadukan kedisiplinan, kerja sama tim, dan ketelitian dalam setiap proyek yang saya kerjakan.
+            </p>
+          </div>
+
+          <div class="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-3">
+            <div class="p-4 rounded-2xl bg-sky-50/90 border border-sky-200/80 flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-sky-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <i data-lucide="school" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-sky-600 uppercase tracking-wider" data-i18n="statSchool">Sekolah</p>
+                <p class="font-display font-bold text-sm sm:text-base text-slate-900">SMKN 1 Blitar</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sky-50/90 border border-sky-200/80 flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <i data-lucide="medal" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-sky-600 uppercase tracking-wider" data-i18n="statPaskibra">Paskibra</p>
+                <p class="font-display font-bold text-sm sm:text-base text-slate-900" data-i18n="statPaskibraVal">15 Kejuaraan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         3. PROJEK SAYA SECTION (Aplikasi Kasir & Database)
+    ======================================================== -->
+    <section id="projects" aria-labelledby="projects-heading" class="scroll-mt-24 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-200 flex items-center justify-center text-sky-600">
+          <i data-lucide="layers" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-600" data-i18n="projectsTag">Karya & Aplikasi</span>
+          <h2 id="projects-heading" class="font-display font-bold text-2xl sm:text-3xl text-slate-900" data-i18n="projectsTitle">Projek Saya</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <!-- Project 1: Aplikasi Kasir (kasir.png) -->
+        <article class="glass-card glass-card-hover rounded-[2rem] p-5 sm:p-7 flex flex-col justify-between gap-6">
+          <button
+            type="button"
+            onclick="openLightboxById('kasir')"
+            class="group relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-sky-100 to-cyan-50 border border-sky-200/90 shadow-inner focus:outline-none focus:ring-4 focus:ring-sky-300"
+            aria-label="Lihat foto Aplikasi Kasir full"
+          >
+            <img
+              id="img-kasir"
+              src="kasir.png"
+              alt="Tampilan Aplikasi Kasir"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              onerror="handleImageFallback(this, 'kasir.png')"
+            />
+
+            <div class="fallback-box hidden flex-col items-center justify-center w-full h-full p-5 text-center bg-gradient-to-br from-sky-100 via-white to-cyan-100">
+              <svg class="w-14 h-14 text-sky-500 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                <path d="M8 21h8"></path>
+                <path d="M12 17v4"></path>
+                <path d="M7 8h4"></path>
+                <path d="M7 12h10"></path>
+              </svg>
+              <span class="font-display font-bold text-sm text-sky-800">kasir.png</span>
+              <span class="text-xs text-sky-600 mt-1" data-i18n="clickFullHint">Klik untuk lihat full</span>
+            </div>
+
+            <div class="absolute inset-0 bg-sky-950/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-sky-700 text-xs sm:text-sm font-bold shadow-lg">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                <span data-i18n="viewFullBtn">Lihat Foto Full</span>
+              </span>
+            </div>
+          </button>
+
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold" data-i18n="projectBadge">Aplikasi Desktop / Web</span>
+              <span class="px-3 py-1 rounded-full bg-cyan-100 text-cyan-700 text-xs font-semibold">Point of Sale</span>
+            </div>
+
+            <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900" data-i18n="projectKasirTitle">
+              Aplikasi Kasir
+            </h3>
+
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed" data-i18n="projectKasirDesc">
+              Sistem aplikasi kasir untuk mencatat transaksi penjualan, menghitung total pembayaran dan kembalian secara otomatis, serta mengelola data barang dengan cepat dan akurat.
+            </p>
+
+            <div class="pt-1">
+              <button
+                type="button"
+                onclick="openLightboxById('kasir')"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-semibold text-sm shadow-md shadow-sky-400/25 transition-all hover:-translate-y-0.5"
+              >
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span data-i18n="viewFullBtn">Lihat Foto Full</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Database (databse.jpeg) -->
+        <article class="glass-card glass-card-hover rounded-[2rem] p-5 sm:p-7 flex flex-col justify-between gap-6">
+          <button
+            type="button"
+            onclick="openLightboxById('database')"
+            class="group relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-sky-100 to-cyan-50 border border-sky-200/90 shadow-inner focus:outline-none focus:ring-4 focus:ring-sky-300"
+            aria-label="Lihat foto Database full"
+          >
+            <img
+              id="img-database"
+              src="databse.jpeg"
+              alt="Tampilan Projek Database"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              onerror="handleImageFallback(this, 'databse.jpeg')"
+            />
+
+            <div class="fallback-box hidden flex-col items-center justify-center w-full h-full p-5 text-center bg-gradient-to-br from-sky-100 via-white to-cyan-100">
+              <svg class="w-14 h-14 text-sky-500 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+              <span class="font-display font-bold text-sm text-sky-800">databse.jpeg</span>
+              <span class="text-xs text-sky-600 mt-1" data-i18n="clickFullHint">Klik untuk lihat full</span>
+            </div>
+
+            <div class="absolute inset-0 bg-sky-950/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-sky-700 text-xs sm:text-sm font-bold shadow-lg">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                <span data-i18n="viewFullBtn">Lihat Foto Full</span>
+              </span>
+            </div>
+          </button>
+
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold" data-i18n="projectDbBadge">Sistem Basis Data</span>
+              <span class="px-3 py-1 rounded-full bg-cyan-100 text-cyan-700 text-xs font-semibold">SQL / Relasional</span>
+            </div>
+
+            <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900" data-i18n="projectDbTitle">
+              Database
+            </h3>
+
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed" data-i18n="projectDbDesc">
+              Perancangan struktur tabel, relasi data, serta pengelolaan basis data terstruktur untuk mendukung penyimpanan informasi dan pencatatan transaksi secara rapi dan efisien.
+            </p>
+
+            <div class="pt-1">
+              <button
+                type="button"
+                onclick="openLightboxById('database')"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-semibold text-sm shadow-md shadow-sky-400/25 transition-all hover:-translate-y-0.5"
+              >
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span data-i18n="viewFullBtn">Lihat Foto Full</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         4. SKILL SAYA SECTION (HANYA LIST - TANPA PERSENTASE)
+    ======================================================== -->
+    <section id="skills" aria-labelledby="skills-heading" class="scroll-mt-24 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-200 flex items-center justify-center text-sky-600">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-600" data-i18n="skillsTag">Kemampuan</span>
+          <h2 id="skills-heading" class="font-display font-bold text-2xl sm:text-3xl text-slate-900" data-i18n="skillsTitle">Skill Saya</h2>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-[2rem] p-6 sm:p-8">
+        <ul id="skills-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"></ul>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         5. SERTIFIKAT SAYA SECTION (sertif.jpg + 1.jpg - 15.jpg)
+    ======================================================== -->
+    <section id="certificates" aria-labelledby="certificates-heading" class="scroll-mt-24 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-200 flex items-center justify-center text-sky-600">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-600" data-i18n="certTag">Pencapaian & Penghargaan</span>
+            <h2 id="certificates-heading" class="font-display font-bold text-2xl sm:text-3xl text-slate-900" data-i18n="certTitle">Sertifikat Saya</h2>
+          </div>
+        </div>
+
+        <p class="text-xs sm:text-sm font-medium text-sky-700 bg-sky-100/90 border border-sky-200 px-3.5 py-2 rounded-xl self-start sm:self-auto" data-i18n="certClickInfo">
+          Klik pada sertifikat mana pun untuk melihat foto penuh
+        </p>
+      </div>
+
+      <!-- Featured Certificate: Sertifikat UTK (sertif.jpg) -->
+      <div class="mb-8">
+        <div class="glass-card glass-card-hover rounded-[2rem] p-5 sm:p-7 border-2 border-sky-300/80 bg-gradient-to-r from-white/95 via-sky-50/85 to-cyan-50/85">
+          <div class="flex flex-col md:flex-row items-center gap-6">
+            <button
+              type="button"
+              onclick="openLightboxById('utk')"
+              class="group relative w-full md:w-72 aspect-[4/3] rounded-2xl overflow-hidden bg-sky-50/90 border border-sky-200 shadow-md shrink-0 focus:outline-none focus:ring-4 focus:ring-sky-300"
+              aria-label="Lihat Sertifikat UTK full"
+            >
+              <img
+                id="img-utk"
+                src="sertif.jpg"
+                alt="Sertifikat UTK Alysa Nisfi Mauran"
+                class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                onerror="handleUtkFallback(this)"
+              />
+
+              <div class="fallback-box hidden flex-col items-center justify-center w-full h-full p-4 text-center bg-gradient-to-br from-sky-100 to-cyan-100">
+                <svg class="w-11 h-11 text-sky-500 mb-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="6"></circle>
+                  <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                </svg>
+                <span class="font-display font-bold text-xs text-sky-800">sertif.jpg</span>
+                <span class="text-[11px] text-sky-600 mt-0.5" data-i18n="clickFullHint">Klik untuk lihat full</span>
+              </div>
+
+              <div class="absolute inset-0 bg-sky-950/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-sky-700 text-xs font-bold shadow">
+                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                  <span data-i18n="viewFullShort">Lihat Full</span>
+                </span>
+              </div>
+            </button>
+
+            <div class="flex-1 text-center md:text-left space-y-3">
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-500 text-white text-xs font-bold shadow-xs">
+                <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
+                <span data-i18n="utkBadge">Sertifikasi Kompetensi</span>
+              </span>
+              <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900" data-i18n="utkTitle">
+                Sertifikat UTK (Uji Terampil / Kompetensi)
+              </h3>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed" data-i18n="utkDesc">
+                Sertifikat bukti kelulusan dan pencapaian kompetensi resmi. Klik gambar untuk menampilkan dokumen sertifikat secara penuh.
+              </p>
+              <div>
+                <button
+                  type="button"
+                  onclick="openLightboxById('utk')"
+                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-800 font-semibold text-xs sm:text-sm transition-colors"
+                >
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                  <span data-i18n="viewFullBtn">Lihat Foto Full</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15 Paskibra Championship Certificates Header -->
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-display font-bold text-lg sm:text-xl text-slate-800 flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+          <span data-i18n="paskibraGridTitle">15 Sertifikat Kejuaraan Paskibra</span>
+        </h3>
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-sky-100 text-sky-700">1.jpg – 15.jpg</span>
+      </div>
+
+      <!-- Responsive Grid of 15 Paskibra Certificates (1.jpg to 15.jpg) -->
+      <div id="paskibra-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5"></div>
+    </section>
+
+    <!-- =======================================================
+         6. KONTAK SAYA SECTION (Instagram Pribadi & Email)
+    ======================================================== -->
+    <section id="contact" aria-labelledby="contact-heading" class="scroll-mt-24 reveal">
+      <div class="glass-card rounded-[2rem] p-6 sm:p-10 bg-gradient-to-br from-white/95 via-sky-50/90 to-cyan-100/70">
+        <div class="max-w-3xl mx-auto text-center space-y-3 mb-8">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold uppercase tracking-wider" data-i18n="contactTag">Hubungi Saya</span>
+          <h2 id="contact-heading" class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900" data-i18n="contactTitle">Kontak Pribadi</h2>
+          <p class="text-sm sm:text-base text-slate-600" data-i18n="contactSubtitle">
+            Terhubung dengan saya melalui Instagram pribadi atau kirim pesan langsung melalui email di bawah ini.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
+          <!-- Instagram Pribadi Card -->
+          <a
+            href="https://www.instagram.com/awlshaa?dmpr=Zno3cndhN285MXRo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group p-5 sm:p-6 rounded-2xl bg-white hover:bg-sky-50/90 border border-sky-200 shadow-sm hover:shadow-md transition-all flex items-center gap-4 hover:-translate-y-0.5"
+          >
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-400 text-white flex items-center justify-center shrink-0 shadow-md shadow-sky-400/25 group-hover:scale-105 transition-transform">
+              <i data-lucide="instagram" class="w-6 h-6"></i>
+            </div>
+            <div class="min-w-0 flex-1 text-left">
+              <p class="text-xs font-bold uppercase tracking-wider text-sky-600" data-i18n="igLabel">Instagram Pribadi</p>
+              <p class="font-display font-bold text-base sm:text-lg text-slate-900 truncate">@awlshaa</p>
+              <p class="text-xs text-slate-500 truncate" data-i18n="igHint">Klik untuk membuka profil Instagram</p>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-5 h-5 text-sky-400 group-hover:text-sky-600 shrink-0"></i>
+          </a>
+
+          <!-- Email Card -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-white border border-sky-200 shadow-sm flex items-center justify-between gap-3">
+            <a
+              href="mailto:nisfimauran@gmail.com"
+              class="group flex items-center gap-4 min-w-0 flex-1"
+            >
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-sky-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-cyan-400/25 group-hover:scale-105 transition-transform">
+                <i data-lucide="mail" class="w-6 h-6"></i>
+              </div>
+              <div class="min-w-0 flex-1 text-left">
+                <p class="text-xs font-bold uppercase tracking-wider text-sky-600">Email</p>
+                <p id="email-address-text" class="font-display font-bold text-sm sm:text-base text-slate-900 truncate">nisfimauran@gmail.com</p>
+                <p class="text-xs text-slate-500 truncate" data-i18n="emailHint">Klik untuk kirim email</p>
+              </div>
+            </a>
+
+            <button
+              type="button"
+              onclick="copyEmailAddress()"
+              title="Salin Email"
+              aria-label="Salin alamat email"
+              class="p-2.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 transition-colors shrink-0"
+            >
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-sky-200/80 bg-white/75 backdrop-blur-md py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-500">
+      <p class="font-semibold text-slate-700">ALYSA NISFI MAURAN</p>
+      <p data-i18n="footerText">Siswi SMKN 1 Blitar • Portofolio Pribadi</p>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       FULL-SCREEN LIGHTBOX MODAL
+  ========================================================== -->
+  <div
+    id="lightbox-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/92 backdrop-blur-md p-3 sm:p-6 transition-opacity duration-200"
+  >
+    <div class="absolute top-0 inset-x-0 z-20 flex items-center justify-between px-4 sm:px-8 py-4 bg-gradient-to-b from-slate-950/90 to-transparent">
+      <div class="flex items-center gap-3 min-w-0">
+        <span id="lightbox-counter" class="px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/40 text-sky-300 text-xs font-bold shrink-0">
+          1 / 19
+        </span>
+        <div class="min-w-0">
+          <h3 id="lightbox-title" class="text-white font-display font-bold text-sm sm:text-base truncate">
+            Foto Profil
+          </h3>
+          <p id="lightbox-filename" class="text-sky-300 text-xs font-mono truncate">
+            pp.jpeg
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <button
+          type="button"
+          id="lightbox-zoom"
+          onclick="toggleLightboxZoom()"
+          aria-label="Perbesar atau perkecil foto"
+          class="p-2.5 sm:p-3 rounded-2xl bg-white/10 hover:bg-sky-500 text-white border border-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400"
+        >
+          <i id="lightbox-zoom-icon" data-lucide="zoom-in" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+        </button>
+        <button
+          type="button"
+          id="lightbox-close"
+          onclick="closeLightbox()"
+          aria-label="Tutup tampilan penuh"
+          class="p-2.5 sm:p-3 rounded-2xl bg-white/10 hover:bg-sky-500 text-white border border-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400"
+        >
+          <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      id="lightbox-prev"
+      onclick="navigateLightbox(-1)"
+      aria-label="Foto sebelumnya"
+      class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-3 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-sky-500 text-white border border-white/15 backdrop-blur-md transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400"
+    >
+      <i data-lucide="chevron-left" class="w-6 h-6"></i>
+    </button>
+
+    <div id="lightbox-stage" class="relative z-10 flex flex-col items-center justify-center max-w-[92vw] max-h-[82vh] overflow-auto">
+      <img
+        id="lightbox-img"
+        src=""
+        alt="Tampilan Foto Penuh"
+        onclick="toggleLightboxZoom()"
+        class="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-2xl shadow-2xl border border-white/15 bg-slate-900/60 select-none cursor-zoom-in"
+      />
+
+      <div
+        id="lightbox-fallback"
+        class="hidden flex-col items-center justify-center p-8 sm:p-10 rounded-3xl bg-slate-900/90 border border-sky-400/40 text-center max-w-md shadow-2xl"
+      >
+        <div class="w-16 h-16 rounded-2xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-4">
+          <i data-lucide="image" class="w-8 h-8 text-sky-400"></i>
+        </div>
+        <p id="lightbox-fallback-file" class="font-mono text-base font-bold text-sky-300 mb-2">pp.jpeg</p>
+        <p id="lightbox-fallback-msg" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          File gambar lokal ini akan tampil penuh secara otomatis saat file HTML ini disimpan dalam satu folder bersama file gambar tersebut.
+        </p>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      id="lightbox-next"
+      onclick="navigateLightbox(1)"
+      aria-label="Foto berikutnya"
+      class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-3 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-sky-500 text-white border border-white/15 backdrop-blur-md transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400"
+    >
+      <i data-lucide="chevron-right" class="w-6 h-6"></i>
+    </button>
+
+    <div class="absolute bottom-3 inset-x-0 text-center pointer-events-none">
+      <span id="lightbox-hint" class="inline-block px-4 py-1.5 rounded-full bg-white/10 text-slate-300 text-xs backdrop-blur-sm">
+        Gunakan tombol panah kiri/kanan atau geser untuk melihat foto lainnya • ESC untuk menutup
+      </span>
+    </div>
+  </div>
+
+  <!-- Custom Toast Notification -->
+  <div
+    id="toast-notification"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-5 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-900 text-white text-xs sm:text-sm font-semibold shadow-xl border border-sky-400/40"
+  >
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i>
+    <span id="toast-message">Email berhasil disalin!</span>
+  </div>
+</body>
+</html>
